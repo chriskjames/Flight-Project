@@ -90,7 +90,7 @@ app_mode= st.sidebar.selectbox("Select Page", ["Home","Search Flights","Travel D
 if(app_mode=="Home"):
     st.markdown('''## Welcome to the U Flights!✈️''')
     image_path =  "https://readyfortakeoffbook.com/cdn/shop/articles/ready_for_takeoff_Pilot_Interview_Book.webp?v=1727457344&width=2048" 
-    st.image(image_path, use_column_width=True)
+    st.image(image_path, use_container_width=True)
 
     # Telling users the purpose of the app 
     st.markdown("""
