@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 # Replace 'package-name' with your actual package
-package_name = "fast-flights"
+package_name = "fast_flights"
 
 # Run pip install as a subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
