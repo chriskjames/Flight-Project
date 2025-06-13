@@ -2,6 +2,14 @@
 # 1. streamlit run Flight_Project_App.py on terminal line 
 # 2. run the libraries and whatever you want to include
 #3. use Ctrl + C to exit the terminal
+import subprocess
+import sys
+
+# Replace 'package-name' with your actual package
+package_name = "fast_flights"
+
+# Run pip install as a subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
 
 import streamlit as st
 import numpy as np
