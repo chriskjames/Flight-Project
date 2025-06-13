@@ -15,6 +15,8 @@
 # git commit -m "Add requirements.txt for Streamlit Cloud"
 # git push
 
+import streamlit as st
+import numpy as np
 from fast_flights import FlightData, Passengers, create_filter, get_flights
 from datetime import datetime, timedelta, date
 
