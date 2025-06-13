@@ -11,9 +11,9 @@
 # # Run pip install as a subprocess
 # subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
 
-git add requirements.txt
-git commit -m "Add requirements.txt for Streamlit Cloud"
-git push
+# git add requirements.txt
+# git commit -m "Add requirements.txt for Streamlit Cloud"
+# git push
 
 from fast_flights import FlightData, Passengers, create_filter, get_flights
 from datetime import datetime, timedelta, date
