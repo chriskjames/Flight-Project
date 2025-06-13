@@ -3,5 +3,4 @@ pandas
 numpy
 scikit-learn
 fast_flights
-base64
 datetime
