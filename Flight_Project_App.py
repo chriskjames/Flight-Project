@@ -15,7 +15,8 @@ git add requirements.txt
 git commit -m "Add requirements.txt for Streamlit Cloud"
 git push
 
-
+from fast_flights import FlightData, Passengers, create_filter, get_flights
+from datetime import datetime, timedelta, date
 
 # Mapping common city names to airport codes
 city_to_airport_code = {"Phoenix": "PHX", 
