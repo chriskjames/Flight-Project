@@ -149,7 +149,7 @@ elif(app_mode=="Search Flights"):
             )
             if trip_type == "one-way":
                 # Get flights with a filter
-                    result = get_flights(filter)
+                    # result = get_flights(filter)
 
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
