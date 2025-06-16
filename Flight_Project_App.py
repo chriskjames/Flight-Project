@@ -145,7 +145,7 @@ elif(app_mode=="Search Flights"):
                     # Create filter
                     filter = create_filter(
                       flight_data=flight_data,
-                      trip=trip_type,
+                      trip="one-way",
                       seat="economy",
                       passengers=Passengers(adults=1, children=0),
                       )
