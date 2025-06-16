@@ -17,7 +17,7 @@
 
 import streamlit as st
 import numpy as np
-from fast_flights import FlightData, Passengers, Result, get_flights
+from fast_flights import FlightData, Passengers, create_filter, get_flights
 from datetime import datetime, timedelta, date
 
 # Mapping common city names to airport codes
@@ -143,7 +143,7 @@ elif(app_mode=="Search Flights"):
 
             if trip_type == "one-way":
                     # Create filter
-                    filter = Result(
+                    filter = create_filter(
                       flight_data=flight_data,
                       trip="one-way",
                       seat="economy",
