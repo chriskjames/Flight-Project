@@ -149,12 +149,11 @@ elif(app_mode=="Search Flights"):
                       seat="economy",
                       passengers=Passengers(adults=1, children=0),
                   )
-                # Get flights with a filter
+                    # Get flights with a filter
                     result = get_flights(filter)
 
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
-                    # st.write(filter)  # Display the filter as JSON for demonstration
                     st.write(f"**The overall price of the flight is currently: {result.current_price}**")
 
                     # Exclude certain flights name and the long self transfer name.
@@ -204,7 +203,6 @@ elif(app_mode=="Search Flights"):
 
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
-                    # st.write(filter)  # Display the filter as JSON for demonstration
                     st.write(f"**The overall price of the flight is currently: {result.current_price}**")
 
                     # Exclude certain flights name and the long self transfer name.
