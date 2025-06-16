@@ -143,7 +143,7 @@ elif(app_mode=="Search Flights"):
 
             if trip_type == "one-way":
                     # Create filter
-                    filter = result(
+                    filter = Result(
                       flight_data=flight_data,
                       trip="one-way",
                       seat="economy",
