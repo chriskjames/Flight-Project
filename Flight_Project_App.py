@@ -140,16 +140,17 @@ elif(app_mode=="Search Flights"):
                 )
             ]
 
-            # Create filter
-            filter = create_filter(
-                flight_data=flight_data,
-                trip=trip_type,
-                seat="economy",
-                passengers=Passengers(adults=1, children=0),
-            )
+
             if trip_type == "one-way":
+                    # Create filter
+                  filter = create_filter(
+                      flight_data=flight_data,
+                      trip=trip_type,
+                      seat="economy",
+                      passengers=Passengers(adults=1, children=0),
+                  )
                 # Get flights with a filter
-                    # result = get_flights(filter)
+                    result = get_flights(filter)
 
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
