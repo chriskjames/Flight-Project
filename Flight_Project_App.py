@@ -147,7 +147,7 @@ elif(app_mode=="Search Flights"):
                       flight_data=flight_data,
                       trip="one-way",
                       seat="economy",
-                      passengers=Passengers(adults=1, children=0),
+                      passengers=Passengers(adults=1, children=0)
                       )
                     # Get flights with a filter
                     result = get_flights(filter)
@@ -194,7 +194,7 @@ elif(app_mode=="Search Flights"):
                         ],
                     trip="one-way",  # Trip (round-trip, one-way)
                      seat="economy",  # Seat (economy, premium-economy, business or first)
-                    passengers=Passengers(adults=1,children=0,)
+                    passengers=Passengers(adults=1,children=0)
                 )
                     result2 = get_flights(filter2) 
 
