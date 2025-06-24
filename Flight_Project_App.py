@@ -188,8 +188,8 @@ elif(app_mode=="Search Flights"):
                         FlightData(
                         date=return_date2,  # Date of return
                         from_airport=airport_name, 
-                        to_airport="SLC"
-                        ),
+                        to_airport="SLC",
+                        )
                         ],
                     trip="one-way",  # Trip (round-trip, one-way)
                      seat="economy",  # Seat (economy, premium-economy, business or first)
