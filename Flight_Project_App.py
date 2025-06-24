@@ -140,6 +140,16 @@ elif(app_mode=="Search Flights"):
                 )
             ]
 
+            filter = get_flights(
+              flight_data=flight_data,
+              trip="one-way",
+              seat="economy",
+              passengers=Passengers(adults=1, children=0, infants_in_seat=0, infants_on_lap=0),
+              fetch_mode="fallback",
+              )
+            # Get flights with a filter
+            result = filter
+
 
             if trip_type == "one-way":
                     # Create filter
@@ -208,7 +218,7 @@ elif(app_mode=="Search Flights"):
                     excluded_names = ['Frontier', 'Spirit', 
                                     'Self transferThis trip includes tickets from multiple airlines. Missed connections may be protected by the booking provider.']
                     # Get flights with a filter
-                    result = filter
+                    # result = filter
 
                     # Function to check if the current price is low and departing
                     if result.current_price == 'low': 
