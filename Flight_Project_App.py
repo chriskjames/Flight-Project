@@ -458,7 +458,8 @@ elif(app_mode=="Travel Deal Flights"):
             passengers=Passengers(
                 adults=1,
                 children=0,
-                infants_in_seat=0, infants_on_lap=0),
+                infants_in_seat=0, 
+                infants_on_lap=0,
             )
         )
         result_return = filter_return
