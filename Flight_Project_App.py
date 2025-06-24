@@ -261,61 +261,51 @@ elif(app_mode=="Search Flights"):
             #-----------------------#
 
             def create_google_flights_url(from_airport, to_airport, departure_date, return_date=None):
-                #Get today's date
-                today = datetime.today()
-
-                # Step 2: Parse the departure date (assuming it's in 'YYYY-MM-DD' format)
-                dep_date = datetime.strptime(departure_date, "%Y-%m-%d")
-
-                # Add 2 days to today's date
-                date_ahead = today + timedelta(days=2)
-                
-                if dep_date == date_ahead:
-                    start_char = 'w'
-                else:
-                    start_char= 'w'
-                    # Calculate the difference in days between departure date and today
-                    days_difference = (dep_date - today).days
-                    
-                    if days_difference == 2:
-                        start_char = 'w'
-                    # Generate the date string character (x, y, z, 1, 2, etc.)
-                    day_offset = days_difference - 2
-                    if day_offset < 24:
-                    # Continue with alphabet characters
-                        date_str = chr(ord(start_char) + day_offset)
-                    else:
-                    # Once we pass 'z', we should start numbering (i.e., '1', '2', ...)
-                        date_str = str(day_offset - 24 + 1) 
-        
-                base_url = "https://www.google.com/travel/flights/search"
-                
-                # Construct the tfs parameter
-                if return_date:
-                    # Round-trip
-                    tfs_string = f"CBwQAhooEgoyMDIzLTEwLTEwagwIAhIIL20vMGYycjZyDAgDEggvbS8wZDM1eUABSAFwAYIBCwj___________8BmAEC"
-                else:
-                    # One-way
-                    tfs_string = f"CBwQAhojEgoyMDI1LTAzLTI{date_str}agwIAhIIL20vMGYycjZyBwgBEgNMQVhAAUgBcAGCAQsI____________AZgBAg"
-        
-                # Construct the full URL
-                url = f"{base_url}?tfs={tfs_string}&hl=en"
-                return url
-
-            # Example usage
-            from_airport = "SLC"
-            to_airport = airport_name
-            departure_date = departure_date2
+                """
+                Generates a Google Flights URL using simpler, more reliable query parameters.
             
+                Args:
+                    from_airport (str): The IATA code for the departure airport (e.g., "SLC").
+                    to_airport (str): The IATA code for the arrival airport (e.g., "LAX").
+                    departure_date (str): The departure date in 'YYYY-MM-DD' format.
+                    return_date (str, optional): The return date in 'YYYY-MM-DD' format for round-trips.
+                                                 Defaults to None for one-way trips.
+            
+                Returns:
+                    str: A constructed URL for Google Flights.
+                """
+              base_url = "https://www.google.com/travel/flights/search"
+              query_parts = []
+  
+              # Add origin and destination to the query
+              query_parts.append(f"flights from {from_airport} to {to_airport}")
+  
+              # Add departure date
+              query_parts.append(f"on {departure_date}")
+  
+              # Add return date if it's a round-trip
+              if return_date:
+                  query_parts.append(f"return on {return_date}")
+  
+              # Combine query parts into a single string, URL-encode it
+              full_query = " ".join(query_parts)
+              # Using urllib.parse.quote_plus is best practice for URL encoding spaces and other characters
+              # For this example, we'll manually replace spaces for simplicity as it's common for search queries
+              # If this code were part of a larger application, importing urllib.parse would be recommended.
+              encoded_query = full_query.replace(" ", "%20") # Simple URL encoding for spaces
+  
+              # Construct the full URL with the 'q' parameter
+              url = f"{base_url}?q={encoded_query}&hl=en"
+              return url
+
+
             if trip_type == "one-way":
-            # One-way URL
-                one_way_url = create_google_flights_url(from_airport, to_airport,departure_date)
-                st.write("Here is the one-way URL:", one_way_url)
-            if trip_type == "round-trip":
-                return_date = return_date2
-            # Round-trip URL
-                round_trip_url = create_google_flights_url(from_airport, to_airport, departure_date, return_date)
-                st.write("Here is the round-trip URL:", round_trip_url) 
+              one_way_url = create_google_flights_url(from_airport, to_airport, departure_date2)
+              st.write(f"Here is the one-way URL: {one_way_url}")
+            elif trip_type == "round-trip":
+              round_trip_url = create_google_flights_url(from_airport, to_airport, departure_date2, return_date2)
+              st.write(f"Here is the round-trip URL: {round_trip_url}")
+
         else:
             st.write("City not found or misspelled. Please try again.")
 # -----------------------------------------------------------------------------#
