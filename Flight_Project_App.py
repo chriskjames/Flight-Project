@@ -298,6 +298,11 @@ elif(app_mode=="Search Flights"):
                 url = f"{base_url}?q={encoded_query}&hl=en"
                 return url
 
+            # Example usage
+            from_airport = "SLC"
+            to_airport = airport_name
+            departure_date = departure_date2
+
             if trip_type == "one-way":
               one_way_url = create_google_flights_url(from_airport, to_airport, departure_date2)
               st.write(f"Here is the one-way URL: {one_way_url}")
