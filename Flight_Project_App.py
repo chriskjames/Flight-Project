@@ -208,14 +208,14 @@ elif(app_mode=="Search Flights"):
                     excluded_names = ['Frontier', 'Spirit', 
                                     'Self transferThis trip includes tickets from multiple airlines. Missed connections may be protected by the booking provider.']
                     # Get flights with a filter
-                    # result = get_flights(filter)
+                    result = filter
 
-                    # Function to check if the current price is low
-                    if result2.current_price == 'low': 
-                        low_price_flights = [flight for flight in result2.flights if flight.name not in excluded_names][:5]
+                    # Function to check if the current price is low and departing
+                    if result.current_price == 'low': 
+                        low_price_flights = [flight for flight in result.flights if flight.name not in excluded_names][:5]
                     else:
                         st.write(f"No low-priced flights found 😔 but here are other options")
-                        low_price_flights = [flight for flight in result2.flights if flight.name not in excluded_names][:5]
+                        low_price_flights = [flight for flight in result.flights if flight.name not in excluded_names][:5]
 
                     if low_price_flights:
                         st.write(f"### Top 5 Departure Flight details from Salt Lake City to {user_input}:") 
@@ -244,7 +244,7 @@ elif(app_mode=="Search Flights"):
                                 st.write(f"Departure: {flight.departure}") 
                                 st.write(f"Arrival: {flight.arrival}") 
                                 st.write(f"Duration: {flight.duration}") 
-                                st.write(f"Current price: {result.current_price}")
+                                st.write(f"Current price: {result2.current_price}")
                                 st.write(f"--------------------------")
                         else: st.write("No low-priced flights found.")  
             
