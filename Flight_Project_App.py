@@ -598,7 +598,7 @@ elif(app_mode=="About"):
     air travel smarter, smoother, and more enjoyable for everyone, one flight at a time.""")
     # Write about Meeting the team
     st.header("Meet the Team")
-    image_path2 = "https://github.com/chriskjames/Flight-Project/blob/main/Baby_Chris.jpeg" 
+    image_path2 = "https://raw.githubusercontent.com/chriskjames/Flight-Project/main/Baby_Chris.jpeg" 
     st.image(image_path2)
     st.write("Chris James | CEO")
     
