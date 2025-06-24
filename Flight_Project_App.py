@@ -273,31 +273,30 @@ elif(app_mode=="Search Flights"):
             
                 Returns:
                     str: A constructed URL for Google Flights.
-                """
-              base_url = "https://www.google.com/travel/flights/search"
-              query_parts = []
+                  """
+                base_url = "https://www.google.com/travel/flights/search"
+                query_parts = []
   
-              # Add origin and destination to the query
-              query_parts.append(f"flights from {from_airport} to {to_airport}")
+                # Add origin and destination to the query
+                query_parts.append(f"flights from {from_airport} to {to_airport}")
   
-              # Add departure date
-              query_parts.append(f"on {departure_date}")
+                # Add departure date
+                query_parts.append(f"on {departure_date}")
   
-              # Add return date if it's a round-trip
-              if return_date:
-                  query_parts.append(f"return on {return_date}")
+                # Add return date if it's a round-trip
+                if return_date:
+                    query_parts.append(f"return on {return_date}")
   
-              # Combine query parts into a single string, URL-encode it
-              full_query = " ".join(query_parts)
-              # Using urllib.parse.quote_plus is best practice for URL encoding spaces and other characters
-              # For this example, we'll manually replace spaces for simplicity as it's common for search queries
-              # If this code were part of a larger application, importing urllib.parse would be recommended.
-              encoded_query = full_query.replace(" ", "%20") # Simple URL encoding for spaces
-  
-              # Construct the full URL with the 'q' parameter
-              url = f"{base_url}?q={encoded_query}&hl=en"
-              return url
-
+                # Combine query parts into a single string, URL-encode it
+                full_query = " ".join(query_parts)
+                # Using urllib.parse.quote_plus is best practice for URL encoding spaces and other characters
+                # For this example, we'll manually replace spaces for simplicity as it's common for search queries
+                # If this code were part of a larger application, importing urllib.parse would be recommended.
+                encoded_query = full_query.replace(" ", "%20") # Simple URL encoding for spaces
+    
+                # Construct the full URL with the 'q' parameter
+                url = f"{base_url}?q={encoded_query}&hl=en"
+                return url
 
             if trip_type == "one-way":
               one_way_url = create_google_flights_url(from_airport, to_airport, departure_date2)
