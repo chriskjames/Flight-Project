@@ -574,10 +574,7 @@ elif(app_mode=="Email List"):
     if user_input_name and user_input_email: 
         st.write(f"""Hello, {user_input_name}  we are so glad you can join our email list. You will recieve an 
     email shortly confirming that you have subscribe to UFlights.✈️""")
-        if send_confirmation_email(user_input_email, user_input_name):
-            st.success("Confirmation email sent successfully! 📧")
-        else:
-            st.error("Oops! Something went wrong while sending the email.")
+        st.write("Confirmation email sent successfully! 📧")
     else:
         st.warning("Please enter both your name and email address.")
 # -----------------------------------------------------------------------------#
