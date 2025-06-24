@@ -164,7 +164,7 @@ elif(app_mode=="Search Flights"):
                     # result = get_flights(filter)
 
                     # Function to check if the current price is low
-                    if result.current_price == 'low': 
+                    if flight_result.current_price == 'low': 
                         low_price_flights = [flight for flight in flight_result.flights if flight.name not in excluded_names][:5]
                     else:
                         st.write(f"No low-priced flights found 😔 but here are other options")
