@@ -598,7 +598,7 @@ elif(app_mode=="About"):
     air travel smarter, smoother, and more enjoyable for everyone, one flight at a time.""")
     # Write about Meeting the team
     st.header("Meet the Team")
-    image_path2 =  "Baby_Chris.jpeg" 
-    st.image(image_path2, use_column_width=True)
+    image_path2 =  "/Users/chrisjames/Documents/Python /Flights Project/Baby_Chris.jpeg" 
+    st.image(image_path2)
     st.write("Chris James | CEO")
     
