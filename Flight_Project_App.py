@@ -155,20 +155,20 @@ elif(app_mode=="Search Flights"):
 
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
-                    st.write(f"**The overall price of the flight is currently: {result.current_price}**")
+                    st.write(f"**The overall price of the flight is currently: {flight_result.current_price}**")
 
                     # Exclude certain flights name and the long self transfer name.
                     excluded_names = ['Frontier', 'Spirit', 
                                     'Self transferThis trip includes tickets from multiple airlines. Missed connections may be protected by the booking provider.']
                     # Get flights with a filter
-                    result = get_flights(filter)
+                    # result = get_flights(filter)
 
                     # Function to check if the current price is low
                     if result.current_price == 'low': 
-                        low_price_flights = [flight for flight in result.flights if flight.name not in excluded_names][:5]
+                        low_price_flights = [flight for flight in flight_result.flights if flight.name not in excluded_names][:5]
                     else:
                         st.write(f"No low-priced flights found 😔 but here are other options")
-                        low_price_flights = [flight for flight in result.flights if flight.name not in excluded_names][:5]
+                        low_price_flights = [flight for flight in flight_result.flights if flight.name not in excluded_names][:5]
 
                     if low_price_flights:
                         st.write(f"### Top 5 Departure Flight details from Salt Lake City to {user_input}:") 
