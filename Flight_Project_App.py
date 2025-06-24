@@ -147,7 +147,7 @@ elif(app_mode=="Search Flights"):
                       flight_data=flight_data,
                       trip="one-way",
                       seat="economy",
-                      passengers=Passengers(adults=1, children=0),
+                      passengers=Passengers(adults=1, children=0, infants_in_seat=0, infants_on_lap=0),
                       fetch_mode="fallback",
                     )
                     # Get flights with a filter
