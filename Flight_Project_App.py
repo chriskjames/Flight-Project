@@ -177,7 +177,7 @@ elif(app_mode=="Search Flights"):
                             st.write(f"Departure: {flight.departure}") 
                             st.write(f"Arrival: {flight.arrival}") 
                             st.write(f"Duration: {flight.duration}") 
-                            st.write(f"Current price: {result.current_price}") 
+                            st.write(f"Current price: {flight_result.current_price}") 
                             st.write(f"--------------------------")
                     else: 
                         st.write("No low-priced flights found.")
