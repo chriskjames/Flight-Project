@@ -160,8 +160,6 @@ elif(app_mode=="Search Flights"):
                     # Exclude certain flights name and the long self transfer name.
                     excluded_names = ['Frontier', 'Spirit', 
                                     'Self transferThis trip includes tickets from multiple airlines. Missed connections may be protected by the booking provider.']
-                    # Get flights with a filter
-                    # result = get_flights(filter)
 
                     # Function to check if the current price is low
                     if flight_result.current_price == 'low': 
@@ -185,7 +183,7 @@ elif(app_mode=="Search Flights"):
                 if return_date2 < departure_date2: 
                     st.write(f"Please enter a date on or after {departure_date2} . Thank you")  
                 else:
-                    filter2 = create_filter(
+                    filter2 = get_flights(
                         flight_data=[
                         FlightData(
                         date=return_date2,  # Date of return
@@ -195,29 +193,29 @@ elif(app_mode=="Search Flights"):
                         ],
                     trip="one-way",  # Trip (round-trip, one-way)
                      seat="economy",  # Seat (economy, premium-economy, business or first)
-                    passengers=Passengers(adults=1,children=0)
+                    passengers=Passengers(adults=1,children=0, infants_in_seat=0, infants_on_lap=0),
                 )
-                    result2 = get_flights(filter2) 
+                    result2 = filter2
 
                     # Get flights with a filter
-                    result = get_flights(filter)
+                    # result = get_flights(filter)
 
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
-                    st.write(f"**The overall price of the flight is currently: {result.current_price}**")
+                    st.write(f"**The overall price of the flight is currently: {result2.current_price}**")
 
                     # Exclude certain flights name and the long self transfer name.
                     excluded_names = ['Frontier', 'Spirit', 
                                     'Self transferThis trip includes tickets from multiple airlines. Missed connections may be protected by the booking provider.']
                     # Get flights with a filter
-                    result = get_flights(filter)
+                    # result = get_flights(filter)
 
                     # Function to check if the current price is low
-                    if result.current_price == 'low': 
-                        low_price_flights = [flight for flight in result.flights if flight.name not in excluded_names][:5]
+                    if result2.current_price == 'low': 
+                        low_price_flights = [flight for flight in result2.flights if flight.name not in excluded_names][:5]
                     else:
                         st.write(f"No low-priced flights found 😔 but here are other options")
-                        low_price_flights = [flight for flight in result.flights if flight.name not in excluded_names][:5]
+                        low_price_flights = [flight for flight in result2.flights if flight.name not in excluded_names][:5]
 
                     if low_price_flights:
                         st.write(f"### Top 5 Departure Flight details from Salt Lake City to {user_input}:") 
@@ -226,7 +224,7 @@ elif(app_mode=="Search Flights"):
                             st.write(f"Departure: {flight.departure}") 
                             st.write(f"Arrival: {flight.arrival}") 
                             st.write(f"Duration: {flight.duration}") 
-                            st.write(f"Current price: {result.current_price}") 
+                            st.write(f"Current price: {result2.current_price}") 
                             st.write(f"--------------------------")
                     else: 
                         st.write("No low-priced flights found.")
