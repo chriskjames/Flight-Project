@@ -207,9 +207,6 @@ elif(app_mode=="Search Flights"):
                 )
                     result2 = filter2
 
-                    # Get flights with a filter
-                    # result = get_flights(filter)
-
                     # Display the filter (or use it for further processing)
                     st.write("### Flight Search Filter:")
                     st.write(f"**The overall price of the flight is currently: {result2.current_price}**")
@@ -217,8 +214,6 @@ elif(app_mode=="Search Flights"):
                     # Exclude certain flights name and the long self transfer name.
                     excluded_names = ['Frontier', 'Spirit', 
                                     'Self transferThis trip includes tickets from multiple airlines. Missed connections may be protected by the booking provider.']
-                    # Get flights with a filter
-                    # result = filter
 
                     # Function to check if the current price is low and departing
                     if result.current_price == 'low': 
@@ -389,22 +384,23 @@ elif(app_mode=="Travel Deal Flights"):
 # Iterate through the date range and apply the filter
     for best_date in date_range:
     # Define the filter for Departure 
-        filter3 = create_filter(
+        filter3 = get_flights(
             flight_data=[
                 FlightData(
                     date=best_date,  # Date of departure
                     from_airport="SLC", 
-                    to_airport=selected_code
-                ),
+                    to_airport=selected_code,
+                )
             ],
             trip="one-way",  # Trip (round-trip, one-way)
             seat="economy",  # Seat (economy, premium-economy, business or first)
             passengers=Passengers(
                 adults=1,
                 children=0,
+                infants_in_seat=0, infants_on_lap=0),
             )
         )
-        result3 = get_flights(filter3)
+        result3 = filter3
 
         # looking at low current price for user  
         if result3.current_price == 'low': 
@@ -448,24 +444,23 @@ elif(app_mode=="Travel Deal Flights"):
     low_return_price_flights = []
 
     for return_date in return_date_range:
-        filter_return = create_filter(
+        filter_return = get_flights(
             flight_data=[
-                # Include more if it's not a one-way trip
                 FlightData(
                     date=return_date,  # Date of return
                     from_airport=selected_code, 
-                    to_airport="SLC"
-                ),
-                # ... include more for round trips
+                    to_airport="SLC",
+                )
             ],
             trip="one-way",  # Trip (round-trip, one-way)
             seat="economy",  # Seat (economy, premium-economy, business or first)
             passengers=Passengers(
                 adults=1,
                 children=0,
+                infants_in_seat=0, infants_on_lap=0),
             )
         )
-        result_return = get_flights(filter_return)
+        result_return = filter_return
         if result_return.current_price == 'low': 
             st.write(f"**Low return price found for {selected_location} on {return_date}!**")
             low_return_price_flights.extend([flight for flight in result_return.flights if is_not_excluded(flight)][:5]) 
